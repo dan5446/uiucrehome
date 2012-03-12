@@ -18,7 +18,7 @@
 .notext { text-indent: -9999px; }
 .icon { font-size:15px; line-height:40px; }
 .iconBox { width:120px; }
-.iconSpacer { width:212px; }
+.iconSpacer { width:272px; }
 
 .portalButton { width:83px; height:83px; border-radius:83px; margin:auto; margin-top: 1.4em; }
 .buttonset { overflow:none; width: 140px;}
@@ -35,7 +35,7 @@
 #graphic1, #graphic2, #graphic3, #graphic4, #graphic5, #graphic6 {  height:400px; width:800px; }
 #portal-graph-0, #portal-graph-1, #portal-graph-2, #portal-graph-3, #portal-graph-4 {  height:400px; width:800px; }
 .graphicButton { font-size:1.5em; height:480px; line-height:480px; color: #222; text-shadow: 1px 1px 0px #333, -1px -1px 0px #000;  }
-.headTemp { padding:10px; width: 90px; margin:20px; margin-top:20px; color:#eee; background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.8)), to(rgba(0,0,0,0.4))); -webkit-border-radius: 10px;}
+.headTemp { padding:10px; width: 90px; margin:20px; margin-top:20px; color:#eee; background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.4)), to(rgba(0,0,0,0.2))); -webkit-border-radius: 10px;}
 .headTemp h1 { font-size:25px;}
 .infoTemp { font-size:15px; padding-bottom:0px; color:#FFF000;}
 #efficiencyGraphic { font-size:20px; padding-left:30px; }
@@ -46,3 +46,10 @@
 .hvacLink { background-position-x:360px; }
 .solarLink { background-position-x:270px; }
 .portalButton:hover { background-position-y:90px; }
+.twenty { font-size:31px; color:#666; }
+.tempNum { font-size:57px; margin-top:-6px; color:#aaa; }
+.tempFont { font-size:14px; margin-top:3px; margin-left:3px; color:#eee; }
+.humNum { font-size: 26px; margin-top:-8px; color:#bbb; }
+.perc { font-size:12px; margin-top:-5px; color:#ccc200; }
+.humWord { font-size:13px; margin-left:2px; padding-top:4px; color:#eee;}
+.fahren { color:#ccc200; }

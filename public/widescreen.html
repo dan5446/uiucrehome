@@ -1,0 +1,153 @@
+<html>
+	
+	<head>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		
+		<!-- StyleSheets -->
+		<!-- <link rel="stylesheet" href="css/view.css" /> -->
+		<link rel="stylesheet" href="css/widescreen.css" />
+		
+		<!-- Includes -->
+		<script type="text/javascript" src="include/jquery-1.4.2.min.js"></script>	<!-- Jquery 1.4 is used for ajax and dynamic page updates see http://jquery.com/ -->
+		<script type="text/javascript" src="include/cufon.js"></script> <!-- Font replacement tool just eye candy basically see http://cufon.shoqolate.com/generate/ -->
+		
+		<!-- Fonts to be used by Cufon for substitution -->
+		<script type="text/javascript" src="include/Helvetica_Neue_Time_400.font.js"></script>	
+		<script type="text/javascript" src="include/Helvetica_Neue_CN_400-Helvetica_Neue_CN_700-Helvetica_Neue_CN_italic_400-Helvetica_Neue_CN_italic_700.font.js"></script>	
+		<script type="text/javascript" src="include/Thin_300.font.js"></script>	
+		
+		<title>Re_Home</title>
+		
+	</head>
+	
+	<body>
+		
+		<div class="fullPage">
+
+			<div class="logo wfill">
+				<div id="radial0" class="radial radialLong"><div id="click0" class="topClick radialGlow"></div><div id="click12" class="bottomClick"></div></div>
+				<div id="radial1" class="radial radialShort"><div id="click1" class="topClick shortClick"></div><div id="click13" class="bottomshortClick"></div></div>
+				<div id="radial2" class="radial radialShort"><div id="click2" class="topClick shortClick"></div><div id="click14" class="bottomshortClick"></div></div>
+				<div id="radial3" class="radial radialLong"><div id="click3" class="topClick"></div><div id="click15" class="bottomClick"></div></div>
+				<div id="radial4" class="radial radialShort"><div id="click4" class="topClick shortClick"></div><div id="click16" class="bottomshortClick"></div></div>
+				<div id="radial5" class="radial radialShort"><div id="click5" class="topClick shortClick"></div><div id="click17" class="bottomshortClick"></div></div>
+				<div id="radial6" class="radial radialLong"><div id="click6" class="topClick"></div><div id="click18" class="bottomClick"></div></div>
+				<div id="radial7" class="radial radialShort"><div id="click7" class="topClick shortClick"></div><div id="click19" class="bottomshortClick"></div></div>
+				<div id="radial8" class="radial radialShort"><div id="click8" class="topClick shortClick"></div><div id="click20" class="bottomshortClick"></div></div>
+				<div id="radial9" class="radial radialLong"><div id="click9" class="topClick"></div><div id="click21" class="bottomClick"></div></div>
+				<div id="radial10" class="radial radialShort"><div id="click10" class="topClick shortClick"></div><div id="click22" class="bottomshortClick"></div></div>
+				<div id="radial11" class="radial radialShort"><div id="click11" class="topClick shortClick"></div><div id="click23" class="bottomshortClick"></div></div>
+
+				<h2 id="portalLogo" class="noText"><span>Re</span> Control</h2>
+				<div class="clock jclock1">Please Enable Javascript</div>
+			</div>
+
+				
+
+				<!-- Begin HVAC Controls Subpage -->				
+				<div id="hvac" class="floatLeft">
+
+					<div class="middle">
+						
+						<div id="bigTempGuage" class="hvac graphic inner floatLeft">
+							<div class="floatLeft noText guageBox guageBoxFirst t1">-40</div>
+							<div class="floatLeft noText guageBox t2">-10</div>
+							<div class="floatLeft noText guageBox t3">-3</div>
+							<div class="floatLeft noText guageBox t4">3</div>
+							<div class="floatLeft noText guageBox t5">10</div>
+							<div class="floatLeft noText guageBox t6">17</div>
+							<div class="floatLeft noText guageBox t7">23</div>
+							<div class="floatLeft noText guageBox t8">30</div>
+							<div class="floatLeft noText guageBox t9">37</div>
+							<div class="floatLeft noText guageBox t10">43</div>
+							<div class="floatLeft noText guageBox t11">50</div>
+							<div class="floatLeft noText guageBox t12">57</div>
+							<div class="floatLeft noText guageBox t13">63</div>
+							<div class="floatLeft noText guageBox t14">70</div>
+							<div class="floatLeft noText guageBox t15">77</div>
+							<div class="floatLeft noText guageBox t16">83</div>
+							<div class="floatLeft noText guageBox t17">90</div>
+							<div class="floatLeft noText guageBox t18">97</div>
+							<div class="floatLeft noText guageBox t19">103</div>
+							<div class="floatLeft noText guageBox guageBoxLast t20">110</div>
+							<div id="insideIndicator"></div>
+							<div id="outsideIndicator"></div>
+						</div>
+						<div id="inside" class="floatLeft"><h1 id="insideTemp"><span class='ist'>72</span>&deg;F</h1><h4>inside</h4></div>
+						<div id="outside" class="floatLeft"><h1 id="outsideTemp"><span class='ost'>68</span>&deg;F</h1><h4>outside</h4></div>
+					</div>
+					<div class="bottom">
+						<ul class="tempControls inner hfill">
+							<li class="hvacSpacer notext floatLeft">ReHome Hvac Controls</li>
+							<li id="thermoLeft" class="hvacColumn floatLeft leftAlign"><h2 class="steelGradient statusWord leftAlign">CERV STATUS</h2><div class="modeholder"><h3 id='coolHeat' class="heatGradient leftAlign word">heating</h3><h3 id='stby' class="steelGradient andSign word"> & </h3><h3 id='ventRecirc' class="ventGradient leftAlign word">venting</h3></div><div id="infoWord" class="steelGradient"><h2>HVAC Info</h2></div></li>
+							<li class="hvacSetpointColumn floatLeft hfill notext"><h5 class="zoner">CERV Setpoint</h5><h1 id="heatTarget" class="targetTemps"><span id="z1Temp" class='ist'>68</span>&deg;F</h1></li>
+							<li class="hvacColumn floatLeft"><h4 class="statusHeader">Sensor Data</h4><h4 class="statusText"><span class='ish'>41</span>% humidity indoors<br /></h4><h4 class="statusText"><span class='osh'>75</span>% humidity outdoors</h4><h4 class="statusText"><span class='co2'>0.4</span> ppm co2 indoors</h4></li>
+							<li class="hvacSpacer notext floatLeft">ReHome Hvac Controls</li>
+						</ul>
+					</div>
+				</div> <!-- end HVAC Controls Subpage -->
+
+				<!-- Begin Solar Power Monitoring Subpage -->
+				<div id="solar" class="floatRight">
+						<div class="middle">
+							
+							<div id="bigTempGuage" class="hvac floatLeft">
+								<div class="floatLeft noText guageBox guageBoxFirst s1">-40</div>
+								<div class="floatLeft noText guageBox s2">-10</div>
+								<div class="floatLeft noText guageBox s3">-3</div>
+								<div class="floatLeft noText guageBox s4">3</div>
+								<div class="floatLeft noText guageBox s5">10</div>
+								<div class="floatLeft noText guageBox s6">17</div>
+								<div class="floatLeft noText guageBox s7">23</div>
+								<div class="floatLeft noText guageBox s8">30</div>
+								<div class="floatLeft noText guageBox s9">37</div>
+								<div class="floatLeft noText guageBox s10">43</div>
+								<div class="floatLeft noText guageBox s11">50</div>
+								<div class="floatLeft noText guageBox s12">57</div>
+								<div class="floatLeft noText guageBox s13">63</div>
+								<div class="floatLeft noText guageBox s14">70</div>
+								<div class="floatLeft noText guageBox s15">77</div>
+								<div class="floatLeft noText guageBox s16">83</div>
+								<div class="floatLeft noText guageBox s17">90</div>
+								<div class="floatLeft noText guageBox s18">97</div>
+								<div class="floatLeft noText guageBox s19">103</div>
+								<div class="floatLeft noText guageBox guageBoxLast s20">110</div>
+								<div id="insideIndicator"></div>
+								<div id="outsideIndicator"></div>
+							</div>
+							<div id="inside" class="floatLeft"><h1 id="insideTemp"><span id="currentProduction">920</span> <span class='unitk'>kW</span></h1><h4 class="genCon">generating</h4></div>
+							<div id="outside" class="floatLeft"><h1 id="outsideTemp"><span id="currentConsumption">680</span> <span class='unitk'>kW</span></h1><h4 class="genCon">consuming</h4></div>
+						</div>
+						<div class="bottom">
+							<ul class="hfill">
+								<li class="hvacSpacer notext floatLeft">Solar Status</li>
+								<li class="sunColumn floatLeft leftAlign"><h2 class="steelGradient statusWord leftAlign">NET ENERGY</h2><div class="modeholder sunmode"><h3 class="sunGradient leftAlign"><span class='netEnergy'>-23.12</span><span id=netUnits> kWh</span></h3></div><div id="infoWord" class="steelGradient"><h2>Power Info</h2></div></li>
+								<li class="sunColumn floatLeft"><h3 class="topBar">Energy Produced</h3><h3 class="whiteText">Last Hour <span class="greenText"><span class="plh">340</span> <span id='plhu'>kWh</span></span></h3><h3 class="whiteText">Last day <span class="greenText"><span class="pld">340</span> <span id=pldu>kWh</span></span></h3><h3 class="whiteText">Last week <span class="greenText"><span class="plw">340</span> <span id=plwu>kWh</span></span></h3></h3></li>
+								<li class="sunColumn floatLeft"><h3 class="topBar">Energy Consumed</h3><h3 class="whiteText">Last Hour <span class="yellowText"><span class="clh">340</span> <span id=clhu>kWh</span></span></h3><h3 class="whiteText">Last day <span class="yellowText"><span class="cld">340</span> <span id=cldu>kWh</span></span></h3><h3 class="whiteText">Last week <span class="yellowText"><span class="clw">340</span> <span id=clwu>kWh</span></span></h3></li>
+								<li class="hvacSpacer notext floatLeft">Solar Status</li>
+							</ul>
+						</div>			
+				</div> 
+				
+				<div class="notify">
+					<div id="notifyHeader"><img src="/images/notify.png" /><h2>Notifications</h2></div>
+					<div id="wrapper">
+						<ul>
+
+						</ul>
+					</div>				
+				</div>
+			</div>
+	
+	</body>
+	
+<!-- JAVASCRIPT APPLICATION LOGIC INCLUDES -->	
+	
+	<script type="text/javascript" src="js/jquery.jclock.js_4.js"></script> <!-- taken from http://mobile.tutsplus.com/tutorials/iphone/iphone-web-app-meta-tags/ -->
+	<script type="text/javascript" src ="js/functions.js"></script> <!-- Logic for updating the page -->
+	<script type="text/javascript" src ="js/wsview.js"></script> <!-- Logic for updating the page -->
+	
+<!---------------------------------------------------------END JAVASCRIPT APPLICATION LOGIC INCLUDES---------------------------------------------------------------------------->
+	
+</html>

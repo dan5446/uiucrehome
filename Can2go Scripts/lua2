@@ -1,0 +1,90 @@
+function xor(x,y) --xor function in arithmetic since bitwise operators not present in LUA
+s = 2048
+r = 0
+while (s > 0) do
+if((x>=s or y>=s)and(x<s or y<s)) then
+r = r + s
+end
+if(x >= s) then
+x = x - s
+end
+if(y >= s) then
+y = y - s
+end
+s = s / 2
+end
+return r
+end
+
+-- Initilize the variables
+
+if monitor == nil then
+monitor = true
+
+var("Change_List", "ME.AV1_Present_Value")
+
+var("Relay_7", "ME.BO27")
+var("State_7", "ME.BO47")
+var("Relay_8", "ME.BO28")
+var("State_8", "ME.BO48")
+var("Relay_9", "ME.BO29")
+var("State_9", "ME.BO49")
+var("Relay_10", "ME.BO30")
+var("State_10", "ME.BO50")
+var("Relay_11", "ME.BO31")
+var("State_11", "ME.BO51")
+var("Relay_12", "ME.BO32")
+var("State_12", "ME.BO52")
+
+var("Switch_7", "ME.BI27")
+var("Switch_8", "ME.BI28")
+var("Switch_9", "ME.BI29")
+var("Switch_10", "ME.BI30")
+var("Switch_11", "ME.BI31")
+var("Switch_12", "ME.BI32")
+
+end
+
+if changed.Switch_7 then
+State_7 = 1
+Relay_7 = Switch_7
+marker = tonumber(Change_List) -- Copy existing changes
+marker = xor(marker, 64)
+Change_List = marker
+end
+if changed.Switch_8 then
+State_8 = 1
+Relay_8 = Switch_8
+marker = tonumber(Change_List) -- Copy existing changes
+marker = xor(marker, 128)
+Change_List = marker
+end
+if changed.Switch_9 then
+State_9 = 1
+Relay_9 = Switch_9
+marker = tonumber(Change_List) -- Copy existing changes
+marker = xor(marker, 256)
+Change_List = marker
+end
+if changed.Switch_10 then
+State_10 = 1
+Relay_10 = Switch_10
+marker = tonumber(Change_List) -- Copy existing changes
+marker = xor(marker, 512)
+Change_List = marker
+end
+if changed.Switch_11 then
+State_11 = 1
+Relay_11 = Switch_11
+marker = tonumber(Change_List) -- Copy existing changes
+marker = xor(marker, 1024)
+Change_List = marker
+end
+if changed.Switch_12 then
+State_12 = 1
+Relay_12 = Switch_12
+marker = tonumber(Change_List) -- Copy existing changes
+marker = xor(marker, 2048)
+Change_List = marker
+end
+

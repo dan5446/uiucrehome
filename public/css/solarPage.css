@@ -26,6 +26,7 @@
 .s19 { background: -webkit-gradient(linear, left top, right top, from(#216815), to(#146017)); }
 .s20 { background: -webkit-gradient(linear, left top, right top, from(#146017), to(#135e16)); }
 
+#insideIndicatorP { -webkit-transition:margin-left 1.0s ease-in-out; width:27px; height:47px; margin-left:534px; position:relative; top:2px; background: url(../images/insideIndicator.png); }
 .sunGradient { font-weight:bold; color: #ffda00; font-size:.8em; margin-top: 5px; -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,.2))); }
 .sunColumn { width:274px; }
 .sunmode { width:240px; }

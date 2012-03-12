@@ -1,0 +1,97 @@
+
+function xor(x,y)
+s = 2048
+r = 0
+while (s > 0) do
+if((x>=s or y>=s)and(x<s or y<s)) then
+r = r + s
+end
+if(x >= s) then
+x = x - s
+end
+if(y >= s) then
+y = y - s
+end
+s = s / 2
+end
+return r
+end
+
+
+-- Initilize the variables
+
+if monitor == nil then
+monitor = true
+
+var("Change_List", "ME.AV1_Present_Value")
+
+var("Relay_3", "ME.BO23")
+var("State_3", "ME.BO43")
+var("Relay_4", "ME.BO24")
+var("State_4", "ME.BO44")
+var("Relay_8", "ME.BO28")
+var("State_8", "ME.BO48")
+var("Relay_9", "ME.BO29")
+var("State_9", "ME.BO49")
+var("Relay_11", "ME.BO31")
+var("State_11", "ME.BO51")
+
+var("Switch_13", "ME.BI33")
+var("Switch_14", "ME.BI34")
+var("Switch_15", "ME.BI35")
+var("Switch_16", "ME.BI36")
+var("Switch_17", "ME.BI37")
+var("Switch_18", "ME.BI38")
+
+end
+
+-- Here, for each switch, I check if it changed state, if it has
+-- Then we set the corresponding relay to match the switch state
+-- Also we set BV1 which is a flag to the server to indicate that
+-- Some lighting state has changed, the description field is populated
+-- with the relay number so the server doesn't need to check every
+-- relay, just the ones that changed state, the server program must
+-- later change erase the desription of BV1 and change its value to 0
+
+if changed.Switch_18 then
+State_3 = 1
+Relay_3 = Switch_18
+marker = tonumber(Change_List) -- Copy existing changes
+marker = xor(marker, 4)
+Change_List = marker
+end
+if changed.Switch_17 then
+State_4 = 1
+Relay_4 = Switch_17
+marker = tonumber(Change_List) -- Copy existing changes
+marker = xor(marker, 8)
+Change_List = marker
+end
+if changed.Switch_15 then
+State_8 = 1
+Relay_8 = Switch_15
+marker = tonumber(Change_List) -- Copy existing changes
+marker = xor(marker, 128)
+Change_List = marker
+end
+if changed.Switch_16 then
+State_9 = 1
+Relay_9 = Switch_16
+marker = tonumber(Change_List) -- Copy existing changes
+marker = xor(marker, 256)
+Change_List = marker
+end
+if changed.Switch_13 then
+State_11 = 1
+Relay_11 = Switch_13
+marker = tonumber(Change_List) -- Copy existing changes
+marker = xor(marker, 1024)
+Change_List = marker
+end
+if changed.Switch_14 then
+State_11 = 1
+Relay_11 = Switch_14
+marker = tonumber(Change_List) -- Copy existing changes
+marker = xor(marker, 1024)
+Change_List = marker
+end

@@ -9,6 +9,6 @@
  * @date Spring 2011
  */
 #viewport { display:none; }
-body { background-image: url(../images/startup.png) !important; background-position:center; }
+body { background-image: url(../images/startup.png) !important; background-position:center !important; }
 
 

@@ -1,0 +1,176 @@
+-- AV1 state variable updater runs periodically to make sure states are correct
+-- note: errors may still occur since changes may be made via the verve
+
+function xor(x,y)
+s = 2048
+r = 0
+while (s > 0) do
+if((x>=s or y>=s)and(x<s or y<s)) then
+r = r + s
+end
+if(x >= s) then
+x = x - s
+end
+if(y >= s) then
+y = y - s
+end
+s = s / 2
+end
+return r
+end
+
+function bit_and(x,y)
+r = 0
+n = 1
+while((x > 0) and (y > 0)) do
+if(((x % 2) == 1) and ((y % 2) == 1)) then
+r = r + n
+end
+x = x / 2
+y = y / 2
+n = n * 2
+end
+return r
+end
+
+function rshift(x, by)
+return math.floor(x / 2 ^ by)
+end
+
+if monitor == nil then
+monitor = true
+
+var("State_Variable", "ME.AV1_Present_Value")
+
+var("Relay_1", "ME.BO21")
+var("Relay_2", "ME.BO22")
+var("Relay_3", "ME.BO23")
+var("Relay_4", "ME.BO24")
+var("Relay_5", "ME.BO25")
+
+var("Relay_6", "ME.BO26")
+var("Relay_7", "ME.BO27")
+var("Relay_8", "ME.BO28")
+var("Relay_9", "ME.BO29")
+var("Relay_10", "ME.BO30")
+var("Relay_11", "ME.BO31")
+var("Relay_12", "ME.BO32")
+
+end
+
+
+
+st8 = tonumber(State_Variable)
+flag_1 = bit_and(st8,1)
+state_1 = tonumber(Relay_1)
+flag_2 = bit_and(rshift(st8,1),1)
+state_2 = tonumber(Relay_2)
+flag_3 = bit_and(rshift(st8,2),1)
+state_3 = tonumber(Relay_3)
+flag_4 = bit_and(rshift(st8,3),1)
+state_4 = tonumber(Relay_4)
+flag_5 = bit_and(rshift(st8,4),1)
+state_5 = tonumber(Relay_5)
+flag_6 = bit_and(rshift(st8,5),1)
+state_6 = tonumber(Relay_6)
+flag_7 = bit_and(rshift(st8,6),1)
+state_7 = tonumber(Relay_7)
+flag_8 = bit_and(rshift(st8,7),1)
+state_8 = tonumber(Relay_8)
+flag_9 = bit_and(rshift(st8,8),1)
+state_9 = tonumber(Relay_9)
+flag_10 = bit_and(rshift(st8,9),1)
+state_10 = tonumber(Relay_10)
+flag_11 = bit_and(rshift(st8,10),1)
+state_11 = tonumber(Relay_11)
+flag_12 = bit_and(rshift(st8,11),1)
+state_12 = tonumber(Relay_12)
+
+verbose = false
+if verbose then
+print("flag 1: ", flag_1)
+print("state 1: ", state_1)
+print("flag 2: ", flag_2)
+print("state 2: ", state_2)
+print("flag 3: ", flag_3)
+print("state 3: ", state_3)
+print("flag 4: ", flag_4)
+print("state 4: ", state_4)
+print("flag 5: ", flag_5)
+print("state 5: ", state_5)
+print("flag 6: ", flag_6)
+print("state 6: ", state_6)
+print("flag 7: ", flag_7)
+print("state 7: ", state_7)
+print("flag 8: ", flag_8)
+print("state 8: ", state_8)
+print("flag 9: ", flag_9)
+print("state 9: ", state_9)
+print("flag 10: ", flag_10)
+print("state 10: ", state_10)
+print("flag 11: ", flag_11)
+print("state 11: ", state_11)
+print("flag 12: ", flag_12)
+print("state 12: ", state_12)
+end
+
+if state_1 ~= flag_1 then
+st8 = tonumber(State_Variable)
+State_Variable = xor(st8,1)
+end
+
+if state_2 ~= flag_2 then
+st8 = tonumber(State_Variable)
+State_Variable = xor(st8,2)
+end
+
+if state_3 ~= flag_3 then
+st8 = tonumber(State_Variable)
+State_Variable = xor(st8,4)
+end
+
+if state_4 ~= flag_4 then
+st8 = tonumber(State_Variable)
+State_Variable = xor(st8,8)
+end
+
+if state_5 ~= flag_5 then
+st8 = tonumber(State_Variable)
+State_Variable = xor(st8,16)
+end
+
+if state_6 ~= flag_6 then
+st8 = tonumber(State_Variable)
+State_Variable = xor(st8,32)
+end
+
+if state_7 ~= flag_7 then
+st8 = tonumber(State_Variable)
+State_Variable = xor(st8,64)
+end
+
+if state_8 ~= flag_8 then
+st8 = tonumber(State_Variable)
+State_Variable = xor(st8,128)
+end
+
+if state_9 ~= flag_9 then
+st8 = tonumber(State_Variable)
+State_Variable = xor(st8,256)
+end
+
+if state_10 ~= flag_10 then
+st8 = tonumber(State_Variable)
+State_Variable = xor(st8,512)
+end
+
+if state_11 ~= flag_11 then
+st8 = tonumber(State_Variable)
+State_Variable = xor(st8,1024)
+end
+
+if state_12 ~= flag_12 then
+st8 = tonumber(State_Variable)
+State_Variable = xor(st8,2048)
+end
+

@@ -39,28 +39,35 @@
 .inUse:hover { border:solid 1px #000; -webkit-box-shadow:0 0 15px #eee; }
 .off { -webkit-box-shadow:0 0 5px #111; background:-webkit-gradient(linear, left top, right bottom, from(rgba(90,90,90,1)), to(rgba(0,0,0,0.4)));}
 .deviceSelected { -webkit-box-shadow:0 0 15px #eee; }
+.phantom { -webkit-box-shadow:0 0 5px #111; background:-webkit-gradient(linear, left top, right bottom, from(rgba(255,255,0,.4)), to(rgba(0,0,0,0.4)));}
+.phantom:hover { border:solid 1px #000; -webkit-box-shadow:0 0 15px #eee; }
 
-#d0000 { top:22px; 	left:38px; }
-#d0001 { top:252px; left:38px; }
-#d0002 { top:537px; left:433px; }
-#d0003 { top:232px; left:128px; }
-#d0004 { top:282px; left:128px; }
-#d0005 { top:435px; left:38px; }
-#d0006 { top:423px; left:408px; }
-#d0007 { top:212px; left:38px; }
+#d0000 { top:232px; left:38px;  }
+#d0001 { top:232px; left:227px; }
+#d0002 { top:187px; left:433px; }
+#d0003 { top:232px; left:373px; }
+#d0004 { top:682px; left:433px; }
+#d0005 { top:423px; left:408px; }
+#d0006 { top:435px; left:38px;  }
+#d0007 { top:62px;  left:128px; }
 #d0008 { top:497px; left:130px; }
-#d0009 { top:377px; left:330px; }
-#d0010 { top:182px; left:128px; }
-#d0011 { top:422px; left:330px; }
+#d0009 { top:122px; left:38px;  }
+#d0010 { top:402px; left:277px; }
+#d0011 { top:87px;  left:330px; }
 #d0012 { top:562px; left:218px; }
-#d0013 { top:607px; left:358px; }
-#d0014 { top:62px; left:128px; }
-#d0015 { top:682px; left:433px; }
-#d0016 { top:232px; left:373px; }
-#d0017 { top:377px; left:218px; }
-#d0018 { top:318px; left:433px; }
+#d0013 { top:377px; left:330px; }
+#d0014 { top:417px; left:330px; }
+#d0015 { top:682px; left:277px; }
+#d0016 { top:377px; left:433px; }
+#d0017 { top:562px; left:38px;  }
+#d0018 { top:320px; left:433px; }
 #d0019 { top:318px; left:338px; }
 #d0020 { top:142px; left:433px; }
+#d0021 { top:277px; left:433px; }
+#d0022 { top:457px; left:330px; }
+#d0023 { top:87px;  left:373px; }
+#d0024 { top:232px; left:433px; }
+
 
 .lightSwitch { width:104px; height:140px; position:relative; float:right; top: 20px;}
 .vLightSwitch { width:18px; border-radius:18px; background: -webkit-gradient(linear, left top, left bottom, from(#444), to(#333)); height:100%; margin:0 auto; -webkit-box-shadow: inset 0 0 10px #111; }

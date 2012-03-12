@@ -10,10 +10,10 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; user-scalable=0;">
 		<link rel="apple-touch-startup-image" href="images/startup.png">		
-		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/icon.png" />
+		<link rel="apple-touch-icon-precomposed" sizes= "72x72" media="(resolution: 132dpi)" href="images/apple-touch-icon-72x72-precomposed.png" />
 		
 		<!-- StyleSheets -->
-		<link rel="stylesheet" href="css/view.css" />
+		<!-- <link rel="stylesheet" href="css/view.css" /> -->
 		<link rel="stylesheet" href="css/hvacPage.css" />
 		<link rel="stylesheet" href="css/portalPage.css" /> 
 		<link rel="stylesheet" href="css/waterPage.css" /> 
@@ -31,7 +31,7 @@
 		<script type="text/javascript" src="include/jquery-1.4.2.min.js"></script>	<!-- Jquery 1.4 is used for ajax and dynamic page updates see http://jquery.com/ -->
 		<script type="text/javascript" src="include/highcharts.js"></script> <!-- Javascript framework for most of the charts see http://www.highcharts.com/ -->
 		<script type="text/javascript" src="include/cufon.js"></script> <!-- Font replacement tool just eye candy basically see http://cufon.shoqolate.com/generate/ -->
-		<script type="text/javascript" src="include/iscroll.js"></script>
+		<!-- <script type="text/javascript" src="include/iscroll.js"></script> -->
 		
 		<!-- Fonts to be used by Cufon for substitution -->
 		<script type="text/javascript" src="include/Helvetica_Neue_Time_400.font.js"></script>	
@@ -54,8 +54,8 @@
 						<div class="threeColumnLeft">
 							<div id="efficiencyGraphic" class="wfill hfill">
 								<div class="spacer floatLeft noText">Spaceer</div>
-								<div id="headTempIn" class="headTempLeft headTemp floatLeft"><h4>Indoor</h4><h3 class="infoTemp">temp</h3><h1 id="intemp" class="intemp">68&deg;F</h1><h3 class="infoTemp">humidity</h3><h1 id="inHum" class="inHum">41%</h1></div>
-								<div id="headTempOut" class="headTempRight headTemp floatLeft"><h4>Outdoor</h4><h3 class="infoTemp">temp</h3><h1 id="outtemp" class="outtemp">78&deg;F</h1><h3 class="infoTemp">humidity</h3><h1 id="outHum" class="outHum">32%</h1></div>
+								<div id="headTempIn" class="headTempLeft headTemp floatLeft"><h4 class="twenty">indoors</h4><h2 id="intemp" class="ist floatLeft tempNum">68</h2><span class="twenty fahren">&deg;F</span><br /><h3 class="infoTemp tempFont">temp</h3><h1 id="inHum" class="inHum floatLeft clear humNum ish">41</h1><h4 class="perc floatLeft">%</h4><h3 class="infoTemp floatLeft humWord">humidity</h3></div>
+								<div id="headTempOut" class="headTempLeft headTemp floatLeft"><h4 class="twenty">outside</h4><h2 id="intemp" class="ost floatLeft tempNum">74</h2><span class="twenty fahren">&deg;F</span><br /><h3 class="infoTemp tempFont">temp</h3><h1 id="inHum" class="outHum floatLeft clear humNum osh">84</h1><h4 class="perc floatLeft">%</h4><h3 class="infoTemp floatLeft humWord">humidity</h3></div>
 							</div>
 						</div>
 						<div class="threeColumnRight">
@@ -80,10 +80,10 @@
 						
 							<div class="viewport centerGraphViewport">
 								<div id="centerGraphLandscape" class="landscape centerGraphLandscape">
-									<div id="portal-graph-0" class="lightbox inner centered floatLeft">Time vs. Power over the past 4 hours</div>
-									<div id="portal-graph-1" class="lightbox inner floatLeft">Time vs. Power over the past 12 hours</div>
-									<div id="portal-graph-2" class="lightbox floatLeft">Time vs. Power over the past 24 hours</div>
-									<div id="portal-graph-3" class="lightbox floatLeft">Time vs. Power over the past 3 days</div>
+									<div id="graphic1" class="lightbox inner centered floatLeft">Time vs. Power over the past 4 hours</div>
+									<div id="graphic2" class="lightbox inner floatLeft">Time vs. Power over the past 12 hours</div>
+									<div id="graphic3" class="lightbox floatLeft">Time vs. Power over the past 24 hours</div>
+									<div id="graphic4" class="lightbox floatLeft">Time vs. Power over the past 3 days</div>
 								</div>
 							</div>
 							<div class="indicators">
@@ -101,22 +101,22 @@
 					    	<li class="floatLeft iconSpacer hfill">
 					        	<div class="hfill notext">spacer</div>
 					        </li>
-							<li class="floatLeft iconBox hfill">
+						<!-- <li class="floatLeft iconBox hfill">
 					        	<div class="graphic inner icon"><div id="infoLink" class="button noText portalButton infoLink">INFO</div></div>
-					        </li>
-							<li class="floatLeft iconBox hfill">
+					        </li> -->
+						<li class="floatLeft iconBox hfill">
 					        	<div class="graphic inner icon"><div id="hvacLink" class="button noText portalButton hvacLink">HVAC</div></div>
 					        </li>
-							<li class="floatLeft iconBox hfill">
+						<li class="floatLeft iconBox hfill">
 					        	<div class="graphic inner icon"><div id="solarLink" class="button noText portalButton solarLink">SOLAR</div></div>
 					        </li>
-							<li class="floatLeft iconBox hfill">
+						<li class="floatLeft iconBox hfill">
 					        	<div class="graphic inner icon"><div id="waterLink" class="button noText portalButton waterLink">WATER</div></div>
 					        </li>
-							<li class="floatLeft iconBox hfill">
+						<li class="floatLeft iconBox hfill">
 					        	<div class="graphic inner icon"><div id="monitorLink" class="button noText portalButton monitorLink">ENERGY</div></div>
 					        </li>
-							<li class="floatLeft iconSpacer hfill">
+						<li class="floatLeft iconSpacer hfill">
 					        	<div class="hfill notext">spacer</div>
 					        </li>
 						</ul>
@@ -161,6 +161,131 @@
 				
 				<!-- Begin HVAC Controls Subpage -->				
 				<div id="hvac" class="fullpage subpage inactive">
+
+					<!-- Begin CERV Manual Controller -->
+					<div id="controlBox" class="controlBox inactive">
+						<div id="controllerCloser" class="controllerCloser"></div>
+						<h2 class="steelGradient headline">CERV Manual Controller</h2>
+						<div class="horizontalSep"></div>
+						<div class="CERVStatus">
+							<div class="statusDisplay wfill">
+								<div class="floatLeft">
+									<div class="statusBox">
+									
+											<div class="floatLeft statusNums"><h2 id='z1t'>72</h2><span class="units">&deg;F</span></div>
+											<div class="divider floatLeft">|</div>
+											<div class="floatLeft statusNums"><h2 id='z1h'>50</h2><span class="units">%</span></div>
+											<div class="divider floatLeft">|</div>
+											<div class="floatLeft statusNums"><h2 id='co2'>986</h2><span class="units">ppm</span></div>
+										
+									</div>	
+									<div class="zoneName">Zone 1</div>							
+								</div>
+								<div class="floatLeft">
+									<div class="statusBox">
+									
+											<div class="floatLeft statusNums"><h2 id='z2t'>72</h2><span class="units">&deg;F</span></div>
+											<div class="divider floatLeft">|</div>
+											<div class="floatLeft statusNums"><h2 id='z2h'>50</h2><span class="units">%</span></div>
+											<div class="divider floatLeft">|</div>
+											<div class="floatLeft statusNums"><h2 id='co2'>986</h2><span class="units">ppm</span></div>
+										
+									</div>	
+									<div class="zoneName">Zone 2</div>								
+								</div>
+								<div class="floatLeft">
+									<div class="statusBox">
+										
+											<div class="floatLeft statusNums wfill centered"><h2 id='brh'>50</h2><span class="units">%</span></div>
+										
+									</div>	
+									<div class="zoneName">Bath</div>								
+								</div>
+								<div class="floatLeft">
+									<div class="statusBox">
+										<div class="wfill">
+											<div class="floatLeft statusNums"><h2 id='ost'>72</h2><span class="units">&deg;F</span></div>
+											<div class="divider floatLeft">|</div>
+											<div class="floatLeft statusNums"><h2 id='osh'>50</h2><span class="units">%</span></div> 
+										</div>
+									</div>	
+									<div class="zoneName">Outside</div>							
+								</div>
+							</div>
+							<div class="statusDisplay wfill clear">
+								<div class="floatLeft">
+									<div class="statusBox">
+										
+											<div class="floatLeft statusNums"><h2 id='vrm'>V</h2><span class="units">vr mode</span></div>
+											<div class="divider floatLeft">|</div>
+											<div class="floatLeft statusNums"><h2 id='chm' >H</h2><span class="units">ch mode</span></div>
+											<div class="divider floatLeft">|</div>
+											<div class="floatLeft statusNums"><h2 id='fq1'>120</h2><span class="units">freq 1</span></div>
+											<div class="divider floatLeft">|</div>
+											<div class="floatLeft statusNums"><h2 id='fq2'>60</h2><span class="units">freq 2</span></div>
+											<div class="divider floatLeft">|</div>
+											<div class="floatLeft statusNums"><h2 id='blr'>off/off</h2><span class="units">blowers</span></div>
+											<div class="divider floatLeft">|</div>
+											<div class="floatLeft statusNums"><h2 id='tfi'>81</h2><span class="units">From In &deg;F</span></div>
+											<div class="divider floatLeft">|</div>
+											<div class="floatLeft statusNums"><h2 id='tfo'>72</h2><span class="units">From Out &deg;F</span></div>
+											<div class="divider floatLeft">|</div>
+											<div class="floatLeft statusNums"><h2 id='tti'>76</h2><span class="units">To In &deg;F</span></div>
+											<div class="divider floatLeft">|</div>
+											<div class="floatLeft statusNums"><h2 id='tto'>74</h2><span class="units">To Out &deg;F</span></div> 
+									
+									</div>	
+									<div class="zoneName">CERV Status</div>							
+								</div>
+							</div>
+							<br />
+							<div id="refresher">
+								<img id="refreshIcon" src="images/refresh.png" />
+								<h4>Refresh Status</h4>
+							</div>
+						</div>
+						<div class="horizontalSep"></div>
+						<div class="wfill centered cervSender">
+							<div class="Vspacer"></div>
+							
+								<div class="floatLeft"><form name="sf1" onSubmit="setCERV(2, $('#sf1').val()); return false;"><label>Frequency 1: </label>
+									<input id='sf1' class="textIn disablable" type="text" name="freq1" placeholder="Enter a Number 0-140" maxlength=3 />
+									<input class="cervSubmit disablable" type="submit" value="Set" /></form>
+									<div class="lower"><form name="sf2" onSubmit="setCERV(3, $('#sf2').val()); return false;"><label>Frequency 2: </label>
+									<input id='sf2' class="textIn disablable" type="text" name="freq2" placeholder="Enter a Number 0-140" maxlength=3 />
+									<input class="cervSubmit disablable" type="submit" value="Set" /></form></div>
+								</div>
+								<div class="floatRight"><form  onSubmit="setCERV(4, 0); return false;"><label>VR Mode: </label>
+									<input type="button" name="vr" value="Vent" class="leftChoice choice disablable" id="v" />
+									<input type="button" name="vr" value="Recirculate" class="rightChoice choice disablable" id="r" />
+									<input class="cervSubmit disablable" type="submit" value="Set" /></form>
+									<div class="lower"><form  onSubmit="setCERV(5, 0); return false;"><label>CH Mode: </label>
+									<input type="button" name="ch" value="Cool" class="leftChoice choice disablable" id="c" />
+									<input type="button" name="ch" value="Heat" class="rightChoice choice disablable" id="h" />
+									<input class="cervSubmit disablable" type="submit" value="Set" /></form></div>
+								</div> 
+							
+								<div class="floatLeft tenTop tenBottom"><form onSubmit="setCERV(6, 0); return false;"><label>Blower 1: </label>
+									<input type="button" name="on/off" value="On" class="leftChoice choice disablable" id="on1" />
+									<input type="button" name="on/off" value="Off" class="rightChoice rightChoiceB choice disablable" id="off1" />
+									<input class="cervSubmit disablable" type="submit" value="Set" /></form>
+									<div class="floatLeft modeText lower clear"><form  onSubmit="setCERV(7, 0); return false;"><label>Blower 2: </label>
+									<input type="button" name="on/off" value="On" class="leftChoice choice disablable" id="on2" />
+									<input type="button" name="on/off" value="Off" class="rightChoice rightChoiceB choice disablable" id="off2" />
+									<input class="cervSubmit disablable" type="submit" value="Set" /></form></div>
+								</div>
+								<div class="floatRight tenTop"><form  onSubmit="setCERV(9, 0); return false;"><label>CERV Mode: </label>
+									<input type="button" name="auto/man" value="Automatic" class="leftChoice AutoMan choice" id="auto" />
+									<input type="button" name="auto/man" value="Manual" class="rightChoice AutoMan choice chosen" id="man" />
+									<input class="cervSubmit" type="submit" value="Set" />
+								</div> 
+							
+						</div>
+						<div class="horizontalSep"></div>
+						<div id="CERVMessage" class="wfill centered clear"><h3>Manual Mode has been set</h3></div>
+					</div>
+
+					<!-- End CERV Manual Controller -->
 					<div class="top">
 						<div class="threeColumnLeft">
 							<div id="portalLink" class="button homeButton noText">home</div>
@@ -222,17 +347,16 @@
 							<div id="insideIndicator"></div>
 							<div id="outsideIndicator"></div>
 						</div>
-						<div id="inside" class="floatLeft"><h1 id="insideTemp">72&deg;F</h1><h4>inside</h4></div>
-						<div id="outside" class="floatLeft"><h1 id="outsideTemp">68&deg;F</h1><h4>outside</h4></div>
+						<div id="inside" class="floatLeft"><h1 id="insideTemp"><span class='ist'>72</span>&deg;F</h1><h4>inside</h4></div>
+						<div id="outside" class="floatLeft"><h1 id="outsideTemp"><span class='ost'>68</span>&deg;F</h1><h4>outside</h4></div>
 					</div>
 					<div class="bottom">
 						<ul class="tempControls inner hfill">
 							<li class="hvacSpacer notext floatLeft">ReHome Hvac Controls</li>
-							<li id="thermoLeft" class="hvacColumn floatLeft leftAlign"><h2 class="steelGradient statusWord leftAlign">STATUS</h2><div class="modeholder"><h3 class="heatGradient leftAlign">heat mode</h3></div><div id="jclock2" class="clock"></div></li>
-							<li class="hvacColumn floatLeft hfill"><h5>Zone 1</h5><h1 id="heatTarget" class="targetTemps"><span id="z1Temp">68</span>&deg;F</h1><div class="buttonset inner centered hfill"><div id="z1u" class="upTemp thermoButton floatLeft"><div class="upTriangle"></div></div><div id="z1d" class="downTemp thermoButton floatLeft"><div class="downTriangle"></div></div></div></li>
-							<li class="hvacColumn floatLeft hfill"><h5>Zone 2</h5><h1 id="coolTarget" class="targetTemps"><span id="z2Temp">68</span>&deg;F</h1><div class="buttonset inner centered hfill"><div id="z2u" class="upTemp thermoButton floatLeft"><div class="upTriangle"></div></div><div id="z2d" class="downTemp thermoButton floatLeft"><div class="downTriangle"></div></div></div></li>
-							<li class="hvacColumn floatLeft"><h4 class="statusHeader">More Details</h4><h4 class="statusText">41% humidity indoors<br />75% humidity outdoors</h4><h4 class="statusText">0.4% CO2 content indoors<br />0.6% CO2 content outdoors</h4></li>
-							<li class="hvacSpacer notext floatLeft">ReHome Hvac Controls</li>
+							<li id="thermoLeft" class="hvacColumn floatLeft leftAlign"><h2 class="steelGradient statusWord leftAlign">CERV STATUS</h2><div class="modeholder"><h3 id='coolHeat' class="heatGradient leftAlign word">heating</h3><h3 id='stby' class="steelGradient andSign word"> & </h3><h3 id='ventRecirc' class="ventGradient leftAlign word">venting</h3></div><div id="jclock2" class="clock"></div></li>
+							<li class="hvacSwitchColumn floatLeft hfill"><div id="waterSwitchVertical" class="vSwitch"></div><div id="waterSwitchHorizontal" class="hSwitch"><h2 class="switchText">ON</h2></div></li>
+							<li class="hvacSetpointColumn floatLeft hfill"><h5>Setpoint</h5><h1 id="heatTarget" class="targetTemps"><span id="z1Temp">68</span>&deg;F</h1><div class="buttonset inner centered hfill"><div id="z1u" class="upTemp thermoButton floatLeft"><div class="upTriangle"></div></div><div id="z1d" class="downTemp thermoButton floatLeft"><div class="downTriangle"></div></div></div></li>
+							<li class="hvacLastColumn floatLeft"><h4 class="statusHeader">Sensor Data</h4><h4 class="statusText"><span class='ish'>41</span>% humidity indoors<br /></h4><h4 class="statusText"><span class='osh'>75</span>% humidity outdoors</h4><h4 class="statusText"><span class='co2'>0.4</span> ppm co2 indoors</h4></li>
 						</ul>
 					</div>
 				</div> <!-- end HVAC Controls Subpage -->
@@ -297,16 +421,16 @@
 								<div class="floatLeft noText guageBox s18">97</div>
 								<div class="floatLeft noText guageBox s19">103</div>
 								<div class="floatLeft noText guageBox guageBoxLast s20">110</div>
-								<div id="insideIndicator"></div>
+								<div id="insideIndicatorP"></div>
 							</div>
-							<div id="solarDraw" class="floatLeft"><h1 id="outsideTemp" class="largeReading floatLeft">904</h1><h4 class="floatRight watts">watts</h4></div>
+							<div id="solarDraw" class="floatLeft"><h1 id="currentProduction" class="largeReading floatLeft">904</h1><h4 class="floatRight watts">Kilowatts</h4></div>
 						</div>
 						<div class="bottom">
 							<ul class="hfill">
 								<li class="hvacSpacer notext floatLeft">Solar Status</li>
-								<li class="sunColumn floatLeft leftAlign"><h2 class="steelGradient statusWord leftAlign">STATUS</h2><div class="modeholder sunmode"><h3 class="sunGradient leftAlign">generating surplus</h3></div><div id="jclock3" class="clock"></div></li>
-								<li class="sunColumn floatLeft"><h3 class="topBar">Energy Produced</h3><h3 class="whiteText">Last Hour <span class="greenText">340 watt-hours</span></h3><h3 class="whiteText">Last day <span class="greenText">340 watt-hours</span></h3><h3 class="whiteText">Last week <span class="greenText">340 watt-hours</span></h3></h3></li>
-								<li class="sunColumn floatLeft"><h3 class="topBar">Energy Consumed</h3><h3 class="whiteText">Last Hour <span class="yellowText">248 watt-hours</span></h3><h3 class="whiteText">Last day <span class="yellowText">902 watt-hours</span></h3><h3 class="whiteText">Last week <span class="yellowText">78291 watt-hours</span></h3></li>
+								<li class="sunColumn floatLeft leftAlign"><h2 class="steelGradient statusWord leftAlign">NET ENERGY</h2><div class="modeholder sunmode"><h3 class="sunGradient leftAlign"><span class='netEnergy'>generating surplus</span> <span id='netUnits'>kWh Consumed</span></h3></div><div id="jclock3" class="clock"></div></li>
+								<li class="sunColumn floatLeft"><h3 class="topBar">Energy Produced</h3><h3 class="whiteText">Last Hour <span class="greenText"><span class="plh">340</span> <span id='plhu'>kWh</span></span></h3><h3 class="whiteText">Last day <span class="greenText"><span class="pld">340</span> <span id='pldu'>kWh</span></span></h3><h3 class="whiteText">Last week <span class="greenText"><span class="plw">340</span> <span id='plwu'>kWh</span></span></h3></h3></li>
+								<li class="sunColumn floatLeft"><h3 class="topBar">Energy Consumed</h3><h3 class="whiteText">Last Hour <span class="yellowText"><span class="clh">340</span> <span id='clhu'>kWh</span></span></h3><h3 class="whiteText">Last day <span class="yellowText"><span class="cld">340</span> <span id='cldu'>kWh</span></span></h3><h3 class="whiteText">Last week <span class="yellowText"><span class="clw">340</span> <span id='clwu'>kWh</span></span></h3></li>
 								<li class="hvacSpacer notext floatLeft">Solar Status</li>
 							</ul>
 						</div>			
@@ -374,15 +498,14 @@
 								<div class="floatLeft noText guageBox guageBoxLast w20">110</div>
 								<div id="insideIndicator"></div>
 							</div>
-							<div id="waterDraw" class="floatLeft"><h1 id="outsideTemp" class="largeReading floatLeft">478</h1><h4 class="floatRight watts">gallons</h4></div>
+							<div id="waterDraw" class="floatLeft"><h1 id="outsideTemp" class="largeReading floatLeft">121</h1><h4 class="floatRight watts">gallons</h4></div>
 						</div>
 						<div class="bottom">
 							<ul class="hfill">
 								<li class="hvacSpacer notext floatLeft">Water Status</li>
-								<li class="waterStatus floatLeft leftAlign"><h2 class="steelGradient statusWord leftAlign">STATUS</h2><div class="waterMode"><h3 class="heatGradient leftAlign word">heating</h3><h3 class = "steelGradient andSign word"> & </h3><h3 class="ventGradient leftAlign word">venting</h3></div><div id="jclock3" class="clock"></div></li>
-								<li class="waterSwitch floatLeft hfill"><div id="waterSwitchVertical" class="vSwitch"></div><div id="waterSwitchHorizontal" class="hSwitch offSwitch"><h2 class="switchText">HEAT</h2></div></li>
-								<li class="waterColumn floatLeft"><h3 class="topBar waterBar">Water Usage Stats</h3><h3 class="whiteText">Use Today<span class="blueText"> 23 gallons</span></h3><h3 class="whiteText">Avg. Daily Usage<span class="blueText"> 39.5 gallons</span></h3><h3 class="whiteText">Water recycled<span class="blueText"> 19 gallons</span></h3></h3></li>
-								<li class="waterColumn floatLeft"><h3 class="topBar waterBar">Grey Water Stats</h3><h3 class="whiteText">Use Today<span class="blueText"> 2 gallons</span></h3><h3 class="whiteText">Water Left<span class="blueText"> 23 gallons</span></h3><h3 class="whiteText">Usage this week<span class="blueText"> 382 gallons</span></h3></li>
+								<li class="waterStatus floatLeft leftAlign"><h2 class="steelGradient statusWord leftAlign">STATUS</h2><div class="waterMode"><h3 class="ventGradient leftAlign word">Eco Mode Heat</h3></div><div id="jclock3" class="clock"></div></li>
+								<li class="waterColumn floatLeft"><h3 class="topBar waterBar">Water Usage Stats</h3><h3 class="whiteText">Use Today<span class="blueText"> 4 gallons</span></h3><h3 class="whiteText">Avg. Daily Usage<span class="blueText"> 39.5 gallons</span></h3><h3 class="whiteText">Water recycled<span class="blueText"> 322 gallons</span></h3></h3></li>
+								<li class="waterColumn floatLeft"><h3 class="topBar waterBar">Grey Water Stats</h3><h3 class="whiteText">Added Today<span class="blueText"> 2 gallons</span></h3><h3 class="whiteText">Water Left<span class="blueText"> 237 gallons</span></h3><h3 class="whiteText">Usage this week<span class="blueText"> 176 gallons</span></h3></li>
 								<li class="hvacSpacer notext floatLeft">Water Status</li>
 							</ul>
 						</div>
@@ -414,16 +537,16 @@
 						<div id="space"><h3>Entire House</h3></div>
 						<div id="usageStats">
 							<div id="lightSwitch" class="lightSwitch inactive"><div id="lightSwitchVertical" class="vLightSwitch"></div><div id="lightSwitchHorizontal" class="hLightSwitch offSwitch"><h2 class="lightSwitchText ontext inactive">ON</h2><h2 class="lightSwitchText offtext">OFF</h2></div></div>
-							<h3>Current power usage: <span id="currentUsage">34 watts</span></h3>
-							<h3>Total usage today: <span id="todayUsage">345 kwh</span></h3>
-							<h3>Total usage this week: <span id="weekUsage">1397 kwh</span></h3>
-							<h3>Estimated Cost: <span id="costUsage">$0.14/hr</span></h3>
+							<h3>Current power usage: <span id="currentUsage">34</span> <span>W</span></h3>
+							<h3>Energy usage today: <span id="todayUsage">345</span> <span>kWh</span></h3>
+							<h3>Energy usage this week: <span id="weekUsage">1397</span> <span>kWh</span></h3>
+							<h3 class="notext">Estimated Cost: <span id="costUsage">$0.14/hr</span></h3>
 						</div>
 						<div class="spacer noText">spacer</div>
-						<div id="history" class="leftButton floatLeft glossy selected"><h3>History</h3></div>
-						<div id="breakdown" class="centerbutton floatLeft glossy"><h3>Breakdown</h3></div>
-						<div id="barGraphs" class="centerButton floatLeft glossy"><h3>Bar Graphs</h3></div>
-						<div id="other" class="rightButton floatLeft glossy"><h3>other</h3></div>
+						<div id="history" class="leftButton floatLeft glossy selected" style="margin-left:160px;"><h3>History</h3></div>
+						<!--<div id="breakdown" class="centerbutton floatLeft glossy"><h3>Breakdown</h3></div>
+						<div id="barGraphs" class="centerButton floatLeft glossy"><h3>Bar Graphs</h3></div>-->
+						<div id="other" class="rightButton floatLeft glossy"><h3>Breakdown</h3></div>
 						<div class="spacer noText">spacer</div>						
 						<div class="spacer noText">spacer</div>
 						<div id="monitorGraph" class="holder graphic inner">
@@ -447,54 +570,40 @@
 					</div>
 						<!-- These are the devices in the house, all of these are circular divs positioned absolutely -->
 						<!-- They can be repositioned by atering monitor.css -->
-						<div id="d0000" class="device off livingroom"></div>
-						<div id="d0001" class="device inUse livingroom"></div>
-						<div id="d0002" class="device inUse"></div>
-						<div id="d0003" class="device inUse livingroom light"></div>
-						<div id="d0004" class="device inUse livingroom light"></div>
-						<div id="d0005" class="device inUse"></div>
-						<div id="d0006" class="device inUse light"></div>
-						<div id="d0007" class="device off livingroom"></div>
-						<div id="d0008" class="device inUse light"></div>
-						<div id="d0009" class="device inUse hallway appliance"></div>
-						<div id="d0010" class="device inUse livingroom light"></div>
-						<div id="d0011" class="device off hallway appliance"></div>
-						<div id="d0012" class="device inUse"></div>
-						<div id="d0013" class="device inUse light"></div>
-						<div id="d0014" class="device off livingroom light"></div>
-						<div id="d0015" class="device inUse"></div>
-						<div id="d0016" class="device off kitchen light"></div>
-						<div id="d0017" class="device inUse livingroom"></div>
-						<div id="d0018" class="device off kitchen appliance"></div>
-						<div id="d0019" class="device off kitchen"></div>
-						<div id="d0020" class="device inUse kitchen appliance"></div>
+						<div id="d0000" title="Great Room Outlets" class="device livingroom"></div>
+						<div id="d0001" title="Track Lights" class="device light"></div>
+						<div id="d0002" title="Kitchen Cabinet Lights" class="device light"></div>
+						<div id="d0003" title="Peninsula Light" class="device kitchen light"></div>
+						<div id="d0004" title="Bedroom Lamp" class="device light"></div>
+						<div id="d0005" title="Bathroom Light" class="device light"></div>
+						<div id="d0006" title="Flex Cieling Lights" class="device light"></div>
+						<div id="d0007" title="Dining Table Lights" class="device light"></div>
+						<div id="d0008" title="Flex Sconces" class="device light"></div>
+						<div id="d0009" title="Dining Sconces" class="device light"></div>
+						<div id="d0010" title="Hall Lights" class="device light"></div>
+						<div id="d0011" title="Exterior Lights" class="device light"></div>
+						<div id="d0012" title="Flex Lamp" class="device light"></div>
+						<div id="d0013" title="Hot Water Heater" class="device hall appliance"></div>
+						<div id="d0014" title="CERV" class="device hall appliance"></div>
+						<div id="d0015" title="Bedroom Outlets" class="device bedroom outlet"></div>
+						<div id="d0016" title="Bathroom Outlets" class="device bathroom outlet"></div>
+						<div id="d0017" title="Flex Outlets" class="device office outlet"></div>
+						<div id="d0018" title="Range" class="device kitchen appliance"></div>
+						<div id="d0019" title="Kitchen Outlets" class="device kitchen outlet"></div>
+						<div id="d0020" title="Refridgerator" class="device kitchen appliance"></div>
+						<div id="d0021" title="Microwave" class="device off appliance"></div>
+						<div id="d0022" title="Washer/Dryer" class="device hall appliance"></div>
+						<div id="d0023" title="Exterior Outlets" class="device outside outlet"></div>						
+						<div id="d0024" title="Dishwasher" class="device kitchen appliance"></div>
 				</div> <!-- End Energy Monitor -->
 				
 				<!-- This div will be used to display notifications it is initially inactive and will display messages in h3 tags when necessary -->		
-				<div id="notify" class="notify">
+				<div id="notify" class="notify inactive">
 					<div id="notifyButton" class="notifyButton"></div>
 					<div id="wrapper">
 						<ul>
-							<li><div class="alert floatLeft"></div><h2>Front Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Back Door is open</h2></li>
 							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Front Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Back Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
-							<li><div class="alert floatLeft"></div><h2>Side Door is open</h2></li>
+							<li><div class="alert floatLeft"></div><h2>Laundry is finished</h2></li>
 						</ul>
 					</div>
 				</div><!-- end Notification div -->
@@ -509,9 +618,11 @@
 	
 	<script type="text/javascript" src="js/jquery.jclock.js_4.js"></script> <!-- taken from http://mobile.tutsplus.com/tutorials/iphone/iphone-web-app-meta-tags/ -->
 	<script type="text/javascript" src="js/floorplan.js"></script> <!-- The floorplan widget for the monitoring page -->
+	<script type="text/javascript" src ="js/chartFunctions.js"></script> <!-- Ajax Functions for the Controller -->	
 	<script type="text/javascript" src="js/portalGraphs.js"></script> <!-- Configuration for all of the minor graphs -->
 	<script type="text/javascript" src="js/monitorCharts.js"></script> <!-- Configuration for the energy monitor page graphs -->
 	<script type="text/javascript" src ="js/view.js"></script> <!-- Logic for updating the page -->
+	<script type="text/javascript" src ="js/functions.js"></script> <!-- Ajax Functions for the Controller -->	
 	<script type="text/javascript" src ="js/controller.js"></script> <!-- Logic for controlling the gui -->
 
 	<!--<script type="text/javascript" src ="js/main.js"></script>-->

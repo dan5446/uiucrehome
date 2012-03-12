@@ -6,36 +6,39 @@
 
 // This calls all the contained functions when the document is ready
 // which means that the DOM tree has been loaded
+var statusCheck;
+var sensorCheck;
+var globeCheck;
 $(document).ready(function() { 
 	 // Runs the jquery.clock script in order to fetch the date and time widgets for 
 	 // all the pages which contain it
 	$('.clock').jclock();
-
-  var handleGetPortalGraphs = function( response ) { setPortalCharts(response); };
-  $.ajax({ url: 'ajax/initPortalGraphs.php', data: { foo: 'bar' }, success: handleGetPortalGraphs });
-
- 	// These functions set up all of the charts necessary to be displayed
- 	// they are placeholders for now, eventually they will receive data 
- 	// from the above ajax call and be populated with relevant data
+	//get all chart data
+	setCharts();
 	setThermCharts();
-	sethistoryCharts();
+	sethistoryCharts([2001,9006,2003,9001,2003,9002,2004,9003,1002,2005,1003,2006,9004,2007,9005,2002,2008]);
 	setSunCharts();
 	setWaterCharts();
 	drawFloorPlan();
 
-	//
-	// This function will display a splashscreen for 4 seconds which should be
-	// enough time for the charts to receive their data and be rendered
-	/*setTimeout(function() {
-		$('#bod').removeClass('startUp');
-		$('#landscape').removeClass('inactive');
-	}, 4000);
-  */
-
   // Show splash screen
-  setTimeout(function() { $('body').removeClass('startUp'); $('#landscape').removeClass('inactive'); }, 1000);
-  
-  var myScroll;
-	function loaded() { setTimeout(function () { myScroll = new iScroll('wrapper', {hScrollbar:false}); }, 100); };
-	window.addEventListener('load', loaded, false);
+  setTimeout(function() { $('body').removeClass('startUp'); $('#landscape').removeClass('inactive'); }, 5000); //change stall time b4 live
+
+  //Setup interval polling functions
+  getRelayStates();
+  statusCheck = setInterval('getRelayStates()', 3000); // Check once for relay states
+  clearInterval(statusCheck);
+
+  getGlobeStates();
+  globeCheck = setInterval('getGlobeStates()', 3000); // check once for globe states
+  clearInterval(globeCheck);
+
+  getSensorData();
+  sensorCheck = setInterval('getSensorData()', 5000);
+
+  notificationsPoller()
+  var notify = setInterval('notificationsPoller()', 20000);
+
 });
+
+

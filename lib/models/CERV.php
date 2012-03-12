@@ -1,12 +1,14 @@
 <?php
 
-class PowerLogs extends dbObject
+class CERV extends dbObject
 {
-  protected $sTable    = 'power_logs';
-  protected $aColumns  = array( 'device_id'
+  protected $sTable    = 'cerv_status';
+  protected $aColumns  = array( 'code'
+                               ,'description'
                                ,'value'
                                ,'timestamp'
                               );
+  protected $sID       = 'code';
 
   public function __construct( $aOptions = array() )
   {

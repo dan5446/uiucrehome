@@ -64,6 +64,33 @@ function drawFloorPlan() {
 		Cufon.replace('h3', { fontFamily: 'Thin' }); // Font Replacement: update the replacement at every refresh
 		$('.device').removeClass('deviceSelected');
 		$('.lightSwitch').addClass('inactive');
+		switch (this.key) {
+			case "Kitchen":
+				sethistoryCharts([2001,2003,9005,2002,2008]);
+				getStats([2001,2003,9005,2002,2008]);
+			break;
+			case "Living Room":
+				sethistoryCharts([9003]);
+				getStats([9003]);
+			break;
+			case "Hallway":
+				sethistoryCharts([2006,2007,2004]);
+				getStats([2006,2007,2004]);
+			break;
+			case "Office":
+				sethistoryCharts([9002]);
+				getStats([9002]);
+			break;
+			case "Bathroom":
+				sethistoryCharts([9004]);
+				getStats([9004]);
+			break;
+			case "Bedroom":
+				sethistoryCharts([9001]);
+				getStats([9001]);
+			break;
+
+		}
 	});
 	
 }

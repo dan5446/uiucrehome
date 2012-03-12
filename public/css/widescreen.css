@@ -1,0 +1,432 @@
+
+#hvac { position:absolute; left: -40px;}
+#solar { position:absolute; right: -40px;}
+#infoWord { margin-top:10px; font-size:1.9em; }
+.zoner { font-size:0.9em; }
+#portalLogo { height:635px; background: url(../images/wsLogo.png) no-repeat; background-position:center; padding:10px 0 10px 0; margin:5px 0 -5px 0;} 
+.middle { overflow:hidden; position:relative; top:225px; }
+.clock { margin-top: 7px;  position:relative; top:55px;}
+.radial { height:630px; width:3px; position:absolute; left:955px; top:20px; } 
+.radialShort { height:540px; width:2px; top:65px; } 
+.topClick { width:3px; height:170px; background:-webkit-gradient(linear, left top, left bottom, from(rgba(200,200,200,0.7)), to(rgba(200,200,200,0.1)));}
+.bottomClick {  width:3px; height:170px; position:absolute; top:460px; background:-webkit-gradient(linear, left top, left bottom, from(rgba(200,200,200,0.1)), to(rgba(200,200,200,0.7))); }
+.shortClick { width:2px;  height:120px; background:-webkit-gradient(linear, left top, left bottom, from(rgba(200,200,200,0.7)), to(rgba(200,200,200,0.1))); }
+.bottomshortClick { width:2px;  height:120px; position:absolute; top:420px; background:-webkit-gradient(linear, left top, left bottom, from(rgba(200,200,200,0.1)), to(rgba(200,200,200,0.7))); }
+#radial1  { -webkit-transform: rotate(15deg); }
+#radial2  { -webkit-transform: rotate(30deg); }
+#radial3  { -webkit-transform: rotate(45deg); }
+#radial4  { -webkit-transform: rotate(60deg); }
+#radial5  { -webkit-transform: rotate(75deg); }
+#radial6  { -webkit-transform: rotate(90deg); }
+#radial7  { -webkit-transform: rotate(105deg); }
+#radial8  { -webkit-transform: rotate(120deg); }
+#radial9  { -webkit-transform: rotate(135deg); }
+#radial10 { -webkit-transform: rotate(150deg); }
+#radial11 { -webkit-transform: rotate(165deg); }
+.radialGlow { box-shadow: 0px -2px 9px #fff; background-color:#eee;}
+.noGlow { box-shadow: none; -webkit-transition: box-shadow 0.7s linear; }
+.noGlowLeft { -webkit-transition: background 0.7s linear; background:-webkit-gradient(linear, left top, left bottom, from(rgba(200,200,200,0.1)), to(rgba(200,200,200,0.7)));}
+.noGlowRight { -webkit-transition: background 0.7s linear; background:-webkit-gradient(linear, left top, left bottom, from(rgba(200,200,200,0.7)), to(rgba(200,200,200,0.1)));}
+#notifyHeader > h2 { font-size:1.6em; float:left; margin:5px; }
+#notifyHeader > img { height: 1.8em; float:left; margin:5px; margin-left:15px; margin-right:0px; }
+#wrapper { clear:both; margin:5px; padding:5px; }
+#wrapper h2 { text-align:left; }
+#wrapper img { margin-left:7px; }
+#wrapper li { border-top: 1px solid rgba(200,200,200,0.6); padding-top:5px; padding-bottom:5px; margin-right:7px; }
+#wrapper li:last-child { border-bottom: 1px solid rgba(200,200,200,0.6); }
+
+/**
+ * General Styles for default Landscape orientation
+ * also some site-wide styles such as for the notification
+ * system.
+ * @author Daniel Mestas <dan5446@gmail.com>
+ * @netid mestas1
+ * @date Spring 2011
+ */
+@font-face {
+	font-family: 'Myriad Pro';
+	src: local('☺'), url('../include/GillSansMTPro-Book.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+	
+.startUp { background-image: url(../images/startup.png); width:100%; height:100%; background-position:center; }
+
+.fullpage {
+	margin: 0px;
+	width: 1920px;
+	height: 1080px;
+	text-align: center;
+	background-repeat:repeat-x;
+	background: url(../images/ws.png) no-repeat;
+}
+
+.lightbox { width:100%; overflow:hidden; }
+
+.top { 
+	height:110px; 
+	overflow:hidden; 
+	width:100%; 
+}
+
+.portalTop {
+	height: 160px;
+}
+
+.portalMiddle {
+	height:460px; 
+}
+
+.bottom { 
+	height:148px; 
+	overflow:hidden; 
+	width:100%; 
+}
+
+.threeColumnLeft, .threeColumnRight {
+	width:360px;
+	position:relative;
+}
+
+.threeColumnLeft {
+	float:left;
+}
+
+.threeColumnRight {
+	float:right;
+}
+
+.threeColumnMiddle { 
+	margin-right:360px; 
+	margin-left:360px; 
+	height:100%;
+	position:relative;
+}
+
+/* Reset Default Styles */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+* {
+	-webkit-touch-callout: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-user-select: none;
+}
+
+h4 { font-weight:normal; }
+
+ol, ul { list-style: none; }
+
+:focus { outline: 0; }
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Site Specific Styles */
+body {
+	display:block;
+	margin-top:-5px;
+	padding: 0px;
+	width:1920px;
+	height:1080px;
+	overflow:hidden;
+}
+
+p,
+div{
+	font-family:  Helvetica,Arial,sans-serif;
+	color: #fff;
+	font-size: 1.1em;
+	line-height:1.2em;
+}
+h5 { font-size:small; }
+.viewport { overflow:hidden; margin:0 auto; }
+.portalView { width:1024px; background: url(../images/graphic.png) no-repeat center 20px; }
+.portalLandscape { width:1024px;  }
+
+text { font-family: "Myriad Pro" !important; }
+
+/* Notification widget Styles */
+.notify {
+	width: 295px;
+	height:100%;
+	line-height: 25px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	color: #eee;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left:5px;
+	-webkit-box-shadow: 3px 3px 7px #000;
+	font-size: 16px;
+	background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.75)), color-stop(0.45,rgba(0,0,0,0.75)), color-stop(0.45,rgba(0,0,0,0.75)), color-stop(0.75,rgba(0,0,0,0)), to(rgba(0,0,0,0)));
+
+	-webkit-border-radius: 10px;
+	z-index:5;
+}
+
+.notify h2 { padding: 4px;}
+
+#wrapper { height:700px; -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.98)), to(rgba(0,0,0,0)));	}
+
+.notifyButton {
+	width:20px;
+	height:20px;
+	-webkit-border-radius:20px;
+	background-image: url(../images/x.png);
+	border-radius:20px;
+	background-color:black;
+	border: 2px solid #eee;
+	-webkit-box-shadow: 0 0 7px #000;
+	color:#aaa;
+	text-align:center;
+	line-height:20px;
+	position: absolute;
+	top:-10px;
+	right:-10px;
+	z-index:100;
+}
+
+.alert { 
+	height: 20px;
+	width: 20px;
+	background-image: url(../images/alert.png);
+	background-size: 90%;
+	background-position: center;
+	background-repeat: none;
+}
+/**
+ * Styling for the HVAC Subpage
+ * @author Daniel Mestas <dan5446@gmail.com>
+ * @netid mestas1
+ * @date Spring 2011
+ */
+#bigTempGuage { height:110px; width:718px; }
+.hvacGraph { height:400px; width:100%; }
+.guageBox { width:27px; height:45px; margin:2px; -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.6)), color-stop(0.2,rgba(0,0,0,1)),color-stop(0.5,rgba(0,0,0,1)), color-stop(0.8,rgba(0,0,0,1)), to(rgba(0,0,0,0.6))); margin-top: 33px;}
+//.guageBoxLast { -webkit-border-top-right-radius: 7px; -webkit-border-bottom-right-radius: 7px; }
+.guageBoxFirst { /-webkit-border-top-left-radius: 7px; /-webkit-border-bottom-left-radius: 7px; margin-left:100px; }
+.t1  { background: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,0)), to(#0b28d2)); }
+.t2  { background: -webkit-gradient(linear, left top, right top, from(#0b28d2), to(#1e32c1)); }
+.t3  { background: -webkit-gradient(linear, left top, right top, from(#1e32c1), to(#323daf)); }
+.t4  { background: -webkit-gradient(linear, left top, right top, from(#323daf), to(#4c4a99)); }
+.t5  { background: -webkit-gradient(linear, left top, right top, from(#4c4a99), to(#685981)); }
+.t6  { background: -webkit-gradient(linear, left top, right top, from(#685981), to(#87696a)); }
+.t7  { background: -webkit-gradient(linear, left top, right top, from(#87696a), to(#a17451)); }
+.t8  { background: -webkit-gradient(linear, left top, right top, from(#a17451), to(#bc823a)); }
+.t9  { background: -webkit-gradient(linear, left top, right top, from(#bc823a), to(#d38c27)); }
+.t10 { background: -webkit-gradient(linear, left top, right top, from(#d38c27), to(#e89413)); }
+.t11 { background: -webkit-gradient(linear, left top, right top, from(#e89413), to(#f99b06)); }
+.t12 { background: -webkit-gradient(linear, left top, right top, from(#f99b06), to(#ff9d00)); }
+.t13 { background: -webkit-gradient(linear, left top, right top, from(#ff9d00), to(#ff9900)); }
+.t14 { background: -webkit-gradient(linear, left top, right top, from(#ff9900), to(#ff9200)); }
+.t15 { background: -webkit-gradient(linear, left top, right top, from(#ff9200), to(#ff7b00)); }
+.t16 { background: -webkit-gradient(linear, left top, right top, from(#ff7b00), to(#fb6a00)); }
+.t17 { background: -webkit-gradient(linear, left top, right top, from(#fb6a00), to(#f35f00)); }
+.t18 { background: -webkit-gradient(linear, left top, right top, from(#f35f00), to(#ed5300)); }
+.t19 { background: -webkit-gradient(linear, left top, right top, from(#ed5300), to(#e84b00)); }
+.t20 { background: -webkit-gradient(linear, left top, right top, from(#e84b00), to(rgba(0,0,0,0))); }
+
+.downTriangle {
+	margin-top:20px;
+	margin-left:10px;
+	width:0; height:0px;
+	line-height:0;
+	border-top:15px solid #333;
+	border-left:15px solid rgba(0,0,0,0);
+	border-right:15px solid rgba(0,0,0,0);
+	-webkit-box-shadow: 0 -1px 0 #111;
+	z-index: 5;
+}
+.upTriangle {
+	margin-top:10px;
+	margin-left:10px;
+	width:0; height:4px;
+	line-height:0;
+	border-bottom:15px solid #333;
+	border-left:15px solid rgba(0,0,0,0);
+	border-right:15px solid rgba(0,0,0,0);
+	-webkit-box-shadow: 0 1px 0 #111;
+	z-index: 5;
+}
+
+.thermoButton { 
+	width: 50px; 
+	height: 50px; 
+	border-radius:50px; 
+	margin: 10px; 
+	background: -webkit-gradient(linear, center top, center bottom, from(#aaa), color-stop(0.50,rgba(160,160,160,1)), color-stop(0.55,rgba(120,120,120,1)), to(#333));
+ }
+
+.thermoButton:hover {
+ 	background: -webkit-gradient(linear, center top, center bottom, from(#999), color-stop(0.50,rgba(140,140,140,1)), color-stop(0.55,rgba(100,100,100,1)), to(#222));
+ 	-webkit-box-shadow: 0 -1px 0 0 black, inset 0 0 7px 0 black; 
+}
+
+.statusText { text-align:left; font-size:.7em; padding:2px; margin-top:4px; margin-bottom:3px;}
+
+.statusHeader { text-align:left; font-size:.7em; padding:2px; font-style: italic;}
+
+li>h6 { text-align:left; margin-left:10px; line-height:18px; font-size:15px;}
+.statusHeader { color:#777; }
+.statusWord { font-size: 1.1em; }
+.thermoLeft>h2 { solid #666; padding-bottom:5px;}
+.modeholder { border-top: 1px solid #888; border-bottom: 1px solid #888; width:170px; padding-bottom:2px;}
+.thermoLeft>h3 { padding-top:4px; padding-bottom:4px; }
+.hvacSetpointColumn { width:412px; }
+.hvacColumn { width:206px; }
+.hvacSpacer { width:100px; }
+.targetTemps { font-size: 2.7em; margin-top:20px;}
+.heatGradient { font-weight:bold; color: #ff6900; font-size:.8em; margin-top: 5px; -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,.2))); }
+#inside { width:110px; height:90px; }
+#outside { width:110px; height:90px; }
+#inside>h1 { margin-top:20px; font-size:1.4em; padding:7px; color:#1df7b2; }
+#outside>h1 { margin-top:20px; font-size:1.4em; padding:7px; color:#eee; }
+#inside>h4 { font-size:0.9em; font-style:italic; }
+#outside>h4 { font-size:0.9em; font-style:italic;}
+#insideIndicator { -webkit-transition:margin-left 1.0s ease-in-out; width:27px; height:47px; margin-left:534px; position:relative; top:2px; background: url(../images/insideIndicator.png); }
+#outsideIndicator { -webkit-transition:margin-left 1.0s ease-in-out; width:27px; height:47px; margin-left:472px; position:relative; top:15px; background: url(../images/outsideIndicator.png); }
+.thermIndicator { width:9px; height:9px; border-radius:9px; background-color:#444; margin:6px; }
+#thermLeftArrow { width:100px; }
+#thermRightArrow { width:100px; }
+.thermViewPort { width:800px; height:380px; margin:0px 12px 0px 12px; overflow:hidden; }
+.thermLandscape { width:4800px; height:380px; margin-left:0px; }
+#thermGraphic1, #thermGraphic2, #thermGraphic3, #thermGraphic4 {  height:380px; width:800px; }
+.thermGraphicButton { font-size:1.5em; height:330px; line-height:330px; color: #222; text-shadow: 1px 1px 0px #333, -1px -1px 0px #000;  }
+.leftAlign { text-align:left; }
+.ventGradient { font-weight:bold; color: #92fffe; font-size:.8em; margin-top: 5px; -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,.2))); }
+
+/**
+ * Styling for the Portal page
+ * @author Daniel Mestas <dan5446@gmail.com>
+ * @netid mestas1
+ * @date Spring 2011
+ */
+#portal { width:1024px; height:768px; }
+.steelGradient { color:#eee; -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(0.45,rgba(0,0,0,1)), to(rgba(0,0,0,0))); }
+
+#portalAltn { height:80px; background: url(../images/logo3.png) no-repeat; background-position:center; padding:10px 0 10px 0; margin:20px 0 -5px 0;}
+.portalView { position:absolute; }
+.inactive { display:none; }
+.floatRight { float:right; }
+.floatLeft { float:left; }
+.centered { margin:0 auto; }
+.hfill { height:100%; }
+.wfill { width:100%; }
+.notext { text-indent: -9999px; }
+.icon { font-size:15px; line-height:40px; }
+.iconBox { width:120px; }
+.iconSpacer { width:212px; }
+
+.portalButton { width:83px; height:83px; border-radius:83px; margin:auto; margin-top: 1.4em; }
+.buttonset { overflow:none; width: 140px;}
+
+.graphContainer { position:relative; }
+.indicators { width:84px; height:22px; position:relative; margin:0 auto; }
+.indicator { width:9px; height:9px; border-radius:9px; background-color:#444; margin:6px; }
+.indicating { background-color:#777 !important; -webkit-box-shadow: 0 0 4px 0 #eee; }
+.leftArrow { width:100px; }
+.rightArrow { width:100px; }
+.centerGraphViewPort { width:800px; height:400px; margin:30px 12px 0px 12px; }
+.centerGraphLandscape { width:4800px; height:400px; margin-left:0px; }
+.landscape {-webkit-transition:margin-left 0.5s ease-in-out; }
+#graphic1, #graphic2, #graphic3, #graphic4, #graphic5, #graphic6 {  height:400px; width:800px; }
+#portal-graph-0, #portal-graph-1, #portal-graph-2, #portal-graph-3, #portal-graph-4 {  height:400px; width:800px; }
+.graphicButton { font-size:1.5em; height:480px; line-height:480px; color: #222; text-shadow: 1px 1px 0px #333, -1px -1px 0px #000;  }
+.headTemp { padding:10px; width: 90px; margin:20px; margin-top:20px; color:#eee; background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.4)), to(rgba(0,0,0,0.2))); -webkit-border-radius: 10px;}
+.headTemp h1 { font-size:25px;}
+.infoTemp { font-size:15px; padding-bottom:0px; color:#FFF000;}
+#efficiencyGraphic { font-size:20px; padding-left:30px; }
+.portalButton { background-repeat:none; background-image:url(../images/portalButtons.png); }
+.infoLink { background-position-x:0px; }
+.waterLink { background-position-x:180px; }
+.monitorLink { background-position-x:90px; }
+.hvacLink { background-position-x:360px; }
+.solarLink { background-position-x:270px; }
+.portalButton:hover { background-position-y:90px; }
+.twenty { font-size:31px; color:#666; }
+.tempNum { font-size:57px; margin-top:-6px; color:#aaa; }
+.tempFont { font-size:14px; margin-top:3px; margin-left:3px; color:#eee; }
+.humNum { font-size: 26px; margin-top:-8px; color:#bbb; }
+.perc { font-size:12px; margin-top:-5px; color:#ccc200; }
+.humWord { font-size:13px; margin-left:2px; padding-top:4px; color:#eee;}
+.fahren { color:#ccc200; }
+h1 { text-shadow: 2px 2px 6px #000; }
+.andSign { font-size:.7em; }
+.unitk { font-size:.4em; }
+#CERVMessage { margin-top:35px; color:#fff200; -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,.4))); }
+.word {display: inline-block;}
+/**
+ * Styling for the Solar Power Monitoring Subpage
+ * @author Daniel Mestas <dan5446@gmail.com>
+ * @netid mestas1
+ * @date Spring 2011
+ */
+
+.s1  { background: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,0)), to(#400d0a)); }
+.s2  { background: -webkit-gradient(linear, left top, right top, from(#400d0a), to(#4c1c09)); }
+.s3  { background: -webkit-gradient(linear, left top, right top, from(#4c1c09), to(#5c2f08)); }
+.s4  { background: -webkit-gradient(linear, left top, right top, from(#5c2f08), to(#6c4307)); }
+.s5  { background: -webkit-gradient(linear, left top, right top, from(#6c4307), to(#7d5906)); }
+.s6  { background: -webkit-gradient(linear, left top, right top, from(#7d5906), to(#8d6f04)); }
+.s7  { background: -webkit-gradient(linear, left top, right top, from(#8d6f04), to(#9c8203)); }
+.s8  { background: -webkit-gradient(linear, left top, right top, from(#9c8203), to(#ab9502)); }
+.s9  { background: -webkit-gradient(linear, left top, right top, from(#ab9502), to(#b5a502)); }
+.s10 { background: -webkit-gradient(linear, left top, right top, from(#b5a502), to(#bdb402)); }
+.s11 { background: -webkit-gradient(linear, left top, right top, from(#bdb402), to(#c1bd02)); }
+.s12 { background: -webkit-gradient(linear, left top, right top, from(#c1bd02), to(#bcbf02)); }
+.s13 { background: -webkit-gradient(linear, left top, right top, from(#bcbf02), to(#aab905)); }
+.s14 { background: -webkit-gradient(linear, left top, right top, from(#aab905), to(#92ad08)); }
+.s15 { background: -webkit-gradient(linear, left top, right top, from(#92ad08), to(#789e0c)); }
+.s16 { background: -webkit-gradient(linear, left top, right top, from(#789e0c), to(#56890f)); }
+.s17 { background: -webkit-gradient(linear, left top, right top, from(#56890f), to(#387612)); }
+.s18 { background: -webkit-gradient(linear, left top, right top, from(#387612), to(#216815)); }
+.s19 { background: -webkit-gradient(linear, left top, right top, from(#216815), to(#146017)); }
+.s20 { background: -webkit-gradient(linear, left top, right top, from(#146017), to(rgba(0,0,0,0))); }
+
+#currentProduction { font-size:.7em; }
+#currentConsumption { font-size:.7em; }
+.genCon { margin-top:-10px; }
+.sunGradient { font-weight:bold; color: #ffda00; font-size:.8em; margin-top: 5px; -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,.2))); }
+.sunColumn { width:274px; }
+.sunmode { width:240px; }
+.rightBorder { border-right: 1px solid #333; }
+.topBar { margin-bottom:5px; width:230px; font-size:.9em;text-align:left; color:#eee; border-radius:8px; padding-top:6px; padding-left:12px; padding-right:12px; padding-bottom:3px; background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.2)), to(rgba(0,0,0,0.4))); }
+.usageStats { padding-left:10px; font-size:0.8em;}
+.whiteText {color:#eee; font-style:bold; font-size:.8em; text-align:left; padding-left:10px;}
+.yellowText {color:#fff200; font-size:.8em; text-align:left; padding-left:10px;}
+.greenText {color:#39b54a; font-size:.8em; text-align:left; padding-left:10px;}
+.largeReading { color:#fff200; font-size:1.8em; margin-top:35px; margin-left:10px;}
+.watts { margin-top:40px; margin-left:10px; }
+#sunGraphic1, #sunGraphic2, #sunGraphic3, #sunGraphic4 {  height:380px; width:800px; }
+#sunLeftArrow { width:100px; }
+#sunRightArrow { width:100px; }
+
+/**
+ * Styling for the date widget
+ * @author Daniel Mestas <dan5446@gmail.com>
+ * @netid mestas1
+ * @date 13 February 2011
+ */
+
+#time { font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size:2.3em; font-style:bold; z-index:2; color:#fff; text-shadow: 1px 1px 5px #000; line-height: 1.1em; }
+
+#date { font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:normal; font-size:1.1em !important; color:#ccc; text-shadow: 0 -1px 0 #000; font-size: 0.6em; 0 -1px 0 #000; z-index:1; margin-top: 2px; opacity: 0.8;}

@@ -16,7 +16,7 @@
 document.body.addEventListener('touchmove', function(e) {
 	  // This prevents native scrolling from happening.
 	  e.preventDefault();
-}, false);
+}, false); 
 
 /**
  * Portal Page link handler
@@ -29,7 +29,32 @@ var bindNavigationButtons = function() {
 		requestedID = "#" + requestedID;
 		requestedID = requestedID.substr(0, requestedID.length - 4);
 		var offset = -788;
-		if(requestedID == "#portal") offset = 0;
+		if(requestedID == "#portal") {
+			clearInterval(statusCheck);
+			offset = 0;
+  			clearInterval(sensorCheck);
+  			clearInterval(globeCheck);
+			sensorCheck = setInterval('getSensorData()', 5000);
+		}
+		else if(requestedID == '#monitor') {
+			getRelayStates();
+			statusCheck = setInterval('getRelayStates()', 3000);
+  			clearInterval(sensorCheck);
+  			getGlobeStates();
+  			globeCheck = setInterval('getGlobeStates()', 300*1000); // 5 minute timeout the best we can do with bcpm logs
+		}
+		else if(requestedID == '#solar') {
+			getSolarStats();
+			statusCheck = setInterval('getSolarStats()', 5*6000);
+			clearInterval(sensorCheck);
+		}
+		else if(requestedID == '#hvac') {
+  			clearInterval(sensorCheck);
+			sensorCheck = setInterval('getSensorData()', 5000);	
+		}
+		else { 
+	  		clearInterval(sensorCheck);
+		}
 		$("#landscape").stop().animate({'opacity': 0.0}, 400, function() {
 			$('.subpage').addClass("inactive"); 
 			$(requestedID).removeClass("inactive");
@@ -44,34 +69,58 @@ bindNavigationButtons();
  * This controller sets the view when the temperature widgets on the hvac page are set
  * Add logic to send the message to the server in order to control the device.
  */
+var set = [0,0];
 var bindHvacButtons = function() {
-	$(".thermoButton").bind("mousedown", function(e) {
+	$("#z1d").bind("click", function(e) { 
+		setCERV(9,0);
+		updateCERVStatus();
+		$('#controlBox').removeClass('inactive');
+		CERVManualMode = true;
+	}); // Remove Before Going Live
+	var queued = 0;
+	var sendSetPoint = function() {
+		var setPoint = $('#z1Temp').html();
+		setPoint = parseFloat(setPoint);
+		setCERV(12, setPoint);
+		queued = 0;
+	}
+
+	$(".thermoButton").bind("touchstart", function(e) {
+		var checkLongPress = function () {
+			if(set[0] == 1 && set[1] == 1) {
+				setCERV(9,0);
+				updateCERVStatus();
+				$('#controlBox').removeClass('inactive');
+				CERVManualMode = true;
+			}
+		};
 		var id = this.id;	
 		if (id == 'z1u') {
 			setting = parseFloat($('#z1Temp').html());
 			if(setting < 90) setting += 1;
 			$('#z1Temp').html(setting.toString());
-			// send message
+			set[0] = 1;
+			setTimeout(checkLongPress, 5000);
+			if(!queued) setTimeout(sendSetPoint, 5000);
+			queued = 1;
 		}
-		else if (id == 'z2u') {
-			setting = parseFloat($('#z2Temp').html());
-			if(setting < 90) setting += 1;
-			$('#z2Temp').html(setting.toString());
-			// send message
-		}
-		else if (id == 'z1d') {
+		else {
 			setting = parseFloat($('#z1Temp').html());
 			if(setting > 40) setting -= 1;
 			$('#z1Temp').html(setting.toString());
-			// send message
+			set[1] = 1;
+			if(!queued) setTimeout(sendSetPoint, 5000);
+			queued = 1;
 		}
-		else {
-			setting = parseFloat($('#z2Temp').html());
-			if(setting > 40) setting -= 1;
-			$('#z2Temp').html(setting.toString());
-			// send message
-		}
+
 	});
+	$("#z1u").bind("touchend", function(e) {
+		set[0] = 0;
+	});
+	$("#z2d").bind("touchend", function(e) {
+		set[1] = 0;
+	});
+
 };
 bindHvacButtons();
 
@@ -117,7 +166,7 @@ bindCategoryButtons();
  */
 var bindDeviceButtons = function() {
 	$(".device").bind("click", function(e) {
-		$('#space').html("<h3>"+this.id+"</h3>");
+		$('#space').html("<h3>"+this.title+"</h3>");
 		$('.device').removeClass('deviceSelected');
 		Cufon.replace('h3', {fontFamily: 'Thin'});
 		$('#'+this.id).addClass('deviceSelected');
@@ -146,20 +195,28 @@ bindDeviceButtons();
 
 /**
  * This function binds the events for the switches both on the water monitoring 
- * and the energy monitoring pages. There is not yet logic to send an ajax message to the server 
- * in order to control the device
+ * and the energy monitoring pages. 
  */
+var aRequestQueue = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+var timer;
 var bindSwitches = function() {
 	$(".hSwitch").bind("click", function(e) {
 		if($('#waterSwitchHorizontal').hasClass('offSwitch')){
-			$("#waterSwitchHorizontal").stop().animate({'bottom': '105px', 'background': '-webkit-gradient(linear, left top, left bottom, from(#ff3750), color-stop(0.40,rgba(233,20,20,1)), color-stop(0.45,rgba(200,20,20,1)), to(#5f000c))'}, 80, function() {
-				$('#waterSwitchHorizontal').removeClass("offSwitch"); 
-			});
+			queued = 1;
+			$('#waterSwitchHorizontal').removeClass("offSwitch"); 
+			$("#waterSwitchHorizontal").addClass('switchTop');
+			$('.switchText').html('ON');
+			Cufon.replace('h2', {fontFamily: 'Helvetica Neue Time'});
+			clearTimeout(timer)
+			timer = setTimeout('if(!CERVON) setCERV(13,1); CERVON = true;', 5000);
 		}
 		else {
-			$("#waterSwitchHorizontal").stop().animate({'bottom': '45px', 'background': '-webkit-gradient(linear, left top, left bottom, from(#999), color-stop(0.40,rgba(153,153,153,1)), color-stop(0.45,rgba(130,130,130,1)), to(#333))'}, 80, function() {
-				$('#waterSwitchHorizontal').addClass("offSwitch"); 
-			});
+			$('#waterSwitchHorizontal').addClass("offSwitch"); 
+			$("#waterSwitchHorizontal").addClass('switchBottom');
+			$('.switchText').html('OFF');
+			Cufon.replace('h2', {fontFamily: 'Helvetica Neue Time'});
+			clearTimeout(timer)
+			timer = setTimeout('if(CERVON) setCERV(13,0); CERVON = false; queued = 0;', 5000);
 		}
 	});
 	$(".hLightSwitch").bind("click", function(e) {
@@ -168,17 +225,64 @@ var bindSwitches = function() {
 			$('#lightSwitchHorizontal').removeClass("offSwitch"); 
 			$('.lightSwitchText').html('ON');
 			Cufon.replace('h2', {fontFamily: 'Helvetica Neue Time'});
-			$('.deviceSelected').removeClass('off');
-			$('.deviceSelected').addClass('inUse');
-		
+			var dev_id = $(".deviceSelected").attr('id');
+			dev_id = dev_id.slice(2);
+			//console.log('Device Id: '+dev_id+' requested on');
+			dev_id = parseFloat(dev_id);
+			// Ajax call to lightsOn.php with dev_id as argument
+			// if it returns -1 it was a failure, so reset the switch
+			if (aRequestQueue[dev_id] == 1) {
+				$("#lightSwitchHorizontal").stop().addClass('offSwitch');
+				$('#lightSwitchHorizontal').removeClass("onSwitch"); 
+				$('.lightSwitchText').html('OFF');
+				Cufon.replace('h2', {fontFamily: 'Helvetica Neue Time'});
+			}
+			else {
+				aRequestQueue[dev_id] = 1;
+				$.ajax({
+					url: "/ajax/lightsOn.php",
+					data: {device: dev_id},
+					type: "POST",
+					success: function(data) {
+						$('.deviceSelected').removeClass('off');
+						$('.deviceSelected').addClass('inUse');
+						aRequestQueue[dev_id] = 0;
+						floorplanStatus[dev_id] = 1;
+					}
+				});
+			}
+			
 		}
 		else {
 			$("#lightSwitchHorizontal").stop().addClass('offSwitch');
 			$('#lightSwitchHorizontal').removeClass("onSwitch"); 
 			$('.lightSwitchText').html('OFF');
 			Cufon.replace('h2', {fontFamily: 'Helvetica Neue Time'});
-			$('.deviceSelected').addClass('off');
-			$('.deviceSelected').removeClass('inUse');
+			var dev_id = $(".deviceSelected").attr('id');
+			dev_id = dev_id.slice(2);
+			dev_id = parseFloat(dev_id);
+			// Ajax call to lightsOut.php with dev_id as argument
+			// if it returns -1 it was a failure, so reset the switch
+			if (aRequestQueue[dev_id] == 1) {
+				$("#lightSwitchHorizontal").stop().addClass('onSwitch');
+				$('#lightSwitchHorizontal').removeClass("offSwitch"); 
+				$('.lightSwitchText').html('ON');
+				Cufon.replace('h2', {fontFamily: 'Helvetica Neue Time'});
+			}			
+			else {
+				aRequestQueue[dev_id] = 1;
+				$.ajax({
+					url: "/ajax/lightsOut.php",
+					data: {device: dev_id},
+					type: "POST",
+					success: function(data) {
+						$('.deviceSelected').removeClass('inUse');
+						$('.deviceSelected').addClass('off');
+						aRequestQueue[dev_id] = 0;
+						floorplanStatus[dev_id] = 0;
+					}
+				});
+			}
 		}
 	});
 };
@@ -393,7 +497,7 @@ var bindMonitorSelectorButtons = function() {
 			case 'other': 
 				if(selectedType != this.id) {
 					selectedType = this.id;
-					setOtherCharts();
+					setBreakdownCharts();
 				}
 			break;
 			default:
@@ -416,3 +520,63 @@ var bindNotifyButton = function() {
 	});
 };
 bindNotifyButton();
+
+var bindCERVButtons = function() {
+	$(".choice").bind("click", handler = function(e) {
+		switch (this.id){
+			case 'v': 
+				$('#v').addClass('chosen');
+				$('#r').removeClass('chosen');
+			break;
+			case 'r':
+				$('#r').addClass('chosen');
+				$('#v').removeClass('chosen');
+			break;
+			case 'h':
+				$('#h').addClass('chosen');
+				$('#c').removeClass('chosen');
+			break;
+			case 'c': 
+				$('#c').addClass('chosen');
+				$('#h').removeClass('chosen');
+			break;
+			case 'on1':
+				$('#on1').addClass('chosen');
+				$('#off1').removeClass('chosen');
+			break;
+			case 'off1': 
+				$('#off1').addClass('chosen');
+				$('#on1').removeClass('chosen');
+			break;
+			case 'on2':
+				$('#on2').addClass('chosen');
+				$('#off2').removeClass('chosen');
+			break;
+			case 'off2': 
+				$('#off2').addClass('chosen');
+				$('#on2').removeClass('chosen');
+			break;
+			case 'auto':
+				$('#auto').addClass('chosen');
+				$('#man').removeClass('chosen');
+			break;
+			case 'man': 
+				$('#man').addClass('chosen');
+				$('#auto').removeClass('chosen');
+			break;
+			default:
+			break;
+		}
+	});
+	$('#controllerCloser').bind('click', handler = function(e) {
+		$('#controlBox').addClass('inactive');
+		setCERV(9,1);
+		//disable all updates etc
+	}); 
+	$('#refresher').bind('click', handler = function(e) {
+		setCERV(1,0);
+	}); 
+	
+};
+bindCERVButtons();
+

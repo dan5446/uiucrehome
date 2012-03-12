@@ -1,0 +1,4 @@
+Options +ExecCGI
+Options +Includes
+SetHandler cgi-script
+php_admin_flag safe_mode off
